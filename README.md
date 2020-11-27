@@ -1,5 +1,10 @@
 https://styled-components.com/
 
+npm i styled-components
+
+https://www.cryptocompare.com/
+
+npm i cryptocompare
 
 
 
