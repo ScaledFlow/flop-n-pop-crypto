@@ -1,14 +1,12 @@
 import React from 'react';
 
-// import styled from 'styled-components';
-
 import './App.css';
-// import WelcomeMessage from '../Settings/WelcomeMessage';
+
 import AppLayout from './AppLayout';
 import AppBar from './AppBar';
 import {AppProvider} from './AppProvider';
-// import AppProvider from './AppProvider';
 import Settings from '../Settings';
+import Content from '../Shared/Content';
 
 function App() {
   return (
@@ -16,7 +14,7 @@ function App() {
       <AppProvider>
         <AppBar />
         <Settings />
-        {/* <WelcomeMessage /> */}
+        <Content />
       </AppProvider>
     </AppLayout>
   );
