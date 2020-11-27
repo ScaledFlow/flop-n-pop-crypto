@@ -1,31 +1,52 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
+import {AppContext} from "./AppProvider";
+// import AppContext from "./AppProvider";
+
+
+const Logo = styled.div`
+  font-size: 1.5rem;
+  `
 
 const Bar = styled.div`
   display: grid;
+  margin-bottom: 40px;
   grid-template-columns: 180px auto 100px 100px;
 `
-// // eslint-disable-next-line
-// export default function () {
-//   return 
-//   // eslint-disable-next-line
-//   <Bar> 
-//     <div>CryptoDash</div>
-//     <div></div>
-//     <div>Dashboard</div>
-//     <div>Settings</div> */}
-//   </Bar> 
-//     // eslint-disable-next-line
-// }
+const ControlButtonElem = styled.div`
+cursor: pointer;
+${props => props.active && css`
+  text-shadow: 1px 1px 10px #03ff00;
+`}
+`
+function toProperCase(lower) {
+  return lower.charAt(0).toUpperCase() + lower.substr(1);
+}
 
+function ControlButton({name}){
+  // console.log(name);
+
+  return (
+    <AppContext.Consumer>
+      {({page, setPage}) => (
+        <ControlButtonElem 
+          active={page === name}
+          onClick={()=> setPage(name)}
+          >
+          {toProperCase (name)}
+        </ControlButtonElem>
+      )}
+    </AppContext.Consumer>
+  )
+}
 
 function AppBar () {
   return (
     <Bar> 
-    <div>CryptoDash</div>
+    <Logo>CryptoDash</Logo>
     <div></div>
-    <div>Dashboard</div>
-    <div>Settings</div> 
+    <ControlButton name="dashboard"/>
+    <ControlButton name="settings"/>
   </Bar> 
   );
 }
